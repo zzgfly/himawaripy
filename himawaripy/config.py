@@ -3,7 +3,7 @@ import os.path
 import appdirs
 
 # Increases the quality and the size. Possible values: 4, 8, 16, 20
-level = 4
+level = 8
 
 # Define a hourly offset or let the script calculate it depending on your timezone
 # If auto_offset is True, then script will calculate your hour offset automatically depending on your location.
@@ -16,7 +16,7 @@ hour_offset = 0
 # Path to the output file
 output_file = os.path.join(appdirs.user_cache_dir(appname="himawaripy",
                                                   appauthor=False),
-                           "latest.png")
+                           "latest_{}.png")
 
 # Xfce4 displays to change the background of
 xfce_displays = ["/backdrop/screen0/monitor0/image-path",

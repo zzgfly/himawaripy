@@ -5,6 +5,7 @@ from io import BytesIO
 from itertools import product
 from json import loads
 from multiprocessing import Pool, cpu_count, Value
+import shutil
 from os import makedirs
 from os.path import dirname
 from time import strptime, strftime, mktime
@@ -91,11 +92,14 @@ def main():
         tile = Image.open(BytesIO(tiledata))
         png.paste(tile, (width * x, height * y, width * (x + 1), height * (y + 1)))
 
-    print("\nSaving to '%s'..." % (output_file))
-    makedirs(dirname(output_file), exist_ok=True)
-    png.save(output_file, "PNG")
+    last_output_file = output_file.format(strftime("%Y%m%d%H%M%S", latest))
+    print("\nSaving to '%s'..." % (last_output_file))
+    shutil.rmtree(dirname(last_output_file))
+    makedirs(dirname(last_output_file), exist_ok=True)
 
-    if not set_background(output_file):
+    png.save(last_output_file, "PNG")
+
+    if not set_background(last_output_file):
         exit("Your desktop environment '{}' is not supported.".format(get_desktop_environment()))
 
     print("Done!")

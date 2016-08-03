@@ -7,7 +7,7 @@
 
   <key>ProgramArguments</key>
   <array>
-    <string>/usr/local/bin/himawaripy</string>
+    <string>/Library/Frameworks/Python.framework/Versions/3.5/bin/himawaripy</string>
   </array>
 
   <key>Nice</key>
