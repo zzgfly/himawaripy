@@ -19,7 +19,7 @@ from .config import level, output_file, auto_offset, hour_offset
 from .utils import set_background, get_desktop_environment
 
 import socket
-socket.setdefaulttimeout(20.0)
+socket.setdefaulttimeout(30.0)
 
 counter = None
 height = 550
