@@ -105,4 +105,9 @@ def main():
     print("Done!")
 
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    except Exception as e:
+        main()
+    else:
+        pass
