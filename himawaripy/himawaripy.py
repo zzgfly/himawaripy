@@ -18,6 +18,9 @@ from tzlocal import get_localzone
 from .config import level, output_file, auto_offset, hour_offset
 from .utils import set_background, get_desktop_environment
 
+import socket
+socket.setdefaulttimeout(20.0)
+
 counter = None
 height = 550
 width = 550
@@ -108,6 +111,7 @@ if __name__ == "__main__":
     try:
         main()
     except Exception as e:
-        main()
-    else:
-        pass
+        try:
+            main()
+        except Exception as e:
+            main()
