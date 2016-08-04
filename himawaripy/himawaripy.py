@@ -53,15 +53,16 @@ def download_chunk(args):
 
     x, y, latest = args
     url_format = "http://himawari8.nict.go.jp/img/D531106/{}d/{}/{}_{}_{}.png"
-    try:
-        with urlopen(url_format.format(level, width, strftime("%Y/%m/%d/%H%M%S", latest), x, y)) as tile_w:
-            tiledata = tile_w.read()
-    except Exception as e:
+
+    try_count = 5;
+    for i in range(try_count):
+        print("\rDownloading x:{} y:{} try:{}\r".format(x,y, (i+1)))
         try:
             with urlopen(url_format.format(level, width, strftime("%Y/%m/%d/%H%M%S", latest), x, y)) as tile_w:
                 tiledata = tile_w.read()
+            break;
         except Exception as e:
-            pass
+            print(e)
 
     with counter.get_lock():
         counter.value += 1
