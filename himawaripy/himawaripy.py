@@ -7,7 +7,7 @@ from json import loads
 from multiprocessing import Pool, cpu_count, Value
 import shutil
 from os import makedirs
-from os.path import dirname
+from os.path import dirname,exists
 from time import strptime, strftime, mktime
 from urllib.request import urlopen
 
@@ -97,8 +97,11 @@ def main():
 
     last_output_file = output_file.format(strftime("%Y%m%d%H%M%S", latest))
     print("\nSaving to '%s'..." % (last_output_file))
-    shutil.rmtree(dirname(last_output_file))
-    makedirs(dirname(last_output_file), exist_ok=True)
+    last_output_dir = dirname(last_output_file)
+
+    if exists(last_output_dir):
+        shutil.rmtree(last_output_dir, ignore_errors=True)
+    makedirs(last_output_dir, exist_ok=True)
 
     png.save(last_output_file, "PNG")
 
