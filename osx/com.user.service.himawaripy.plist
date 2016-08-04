@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
   <key>Label</key>
-  <string>com.user.himawaripy</string>
+  <string>com.user.service.himawaripy</string>
 
   <key>ProgramArguments</key>
   <array>
@@ -19,8 +19,8 @@
   <key>RunAtLoad</key>
   <true/>
 
-  <key>KeepAlive</key>
-  <true/>
+  <!-- <key>KeepAlive</key>
+  <true/> -->
 
   <key>StandardErrorPath</key>
   <string>/tmp/himapy.err</string>
