@@ -111,7 +111,7 @@ Many thanks to [xenithorb](https://github.com/xenithorb) [for the solution](http
 OSX has deprecated crontab, and replaced it with `launchd`. To set up a launch agent, copy the provied sample `plist` file in `osx/com.user.himawaripy.plist` to `~/Library/LaunchAgents`, and edit the following entries if required
 
     mkdir -p ~/Library/LaunchAgents/
-    cp osx/com.user.himawaripy.plist ~/Library/LaunchAgents/
+    cp osx/com.user.service.himawaripy.plist ~/Library/LaunchAgents/
 
 * `ProgrammingArguments` needs to be the `/path/to/himawaripy/installation`. This *should* be `/usr/local/bin/himawaripy` by default, but himawaripy may be installed elsewhere.
 
@@ -119,7 +119,7 @@ OSX has deprecated crontab, and replaced it with `launchd`. To set up a launch a
 
 Finally, to launch it, enter this into the console:
 
-    launchctl load ~/Library/LaunchAgents/com.user.himawaripy.plist
+    launchctl load ~/Library/LaunchAgents/com.user.service.himawaripy.plist
 
 
 ## Uninstallation
